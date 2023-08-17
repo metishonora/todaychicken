@@ -3,16 +3,17 @@ package com.metishonora.todaychicken.domain;
 import java.awt.*;
 
 public class Review {
-    private Integer id;
+    private Long id;
     private String text;
     private Double positiveScore;
     private Image image;
+    private String menu;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -38,5 +39,13 @@ public class Review {
 
     public void setImage(Image image) {
         this.image = image;
+    }
+
+    public String getMenu() {
+        return menu;
+    }
+
+    public void setMenu(String menu) {
+        this.menu = menu;
     }
 }

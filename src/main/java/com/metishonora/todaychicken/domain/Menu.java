@@ -2,18 +2,27 @@ package com.metishonora.todaychicken.domain;
 
 import java.util.List;
 
+
 public class Menu {
-    private Integer id;
+    private Long id;
     private String name;
     private String category;
     private Integer price;
-    private List<Review> reviews;
+    private String store;
+    private Integer score;
 
-    public Integer getId() {
+    public Menu(String name, String category, Integer price, String store) {
+        this.name = name;
+        this.category = category;
+        this.price = price;
+        this.store = store;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -41,11 +50,19 @@ public class Menu {
         this.price = price;
     }
 
-    public Review getReviews(Integer index) {
-        return reviews.get(index);
+    public String getStore() {
+        return store;
     }
 
-    public void addReview(Review review) {
-        reviews.add(review);
+    public void setStore(String store) {
+        this.store = store;
+    }
+
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
     }
 }
