@@ -1,26 +1,33 @@
 package com.metishonora.todaychicken.repository;
 
 import com.metishonora.todaychicken.domain.Menu;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
-class MemoryMenuRepositoryTest {
+@SpringBootTest
+public class MemoryMenuRepositoryTest {
+    private final MemoryMenuRepository memoryMenuRepository;
 
-    MemoryMenuRepository memoryMenuRepository;
+    @Autowired
+    public MemoryMenuRepositoryTest(MemoryMenuRepository memoryMenuRepository) {
+        this.memoryMenuRepository = memoryMenuRepository;
+    }
 
+    /*
     @BeforeEach
     public void beforeEach() {
         memoryMenuRepository = new MemoryMenuRepository();
     }
 
+
     @AfterEach
     public void afterEach() {
         memoryMenuRepository.clear();
-        assertThat(memoryMenuRepository.size()).isEqualTo(0);
     }
+    */
 
     @Test
     public void 메뉴등록하기() {
@@ -47,5 +54,18 @@ class MemoryMenuRepositoryTest {
         Menu result2 = memoryMenuRepository.get(2L);
         assertThat(result2.getId()).isEqualTo(2);
         assertThat(result2.getName()).isEqualTo("황금올리브");
+    }
+
+    @Test
+    public void 치우기() {
+        // given
+        Menu menu1 = new Menu("마법클", "시즈닝", 20000, "BHC");
+
+        // when
+        memoryMenuRepository.save(menu1);
+        memoryMenuRepository.clear();
+
+        // then
+        assertThat(memoryMenuRepository.size()).isEqualTo(0);
     }
 }

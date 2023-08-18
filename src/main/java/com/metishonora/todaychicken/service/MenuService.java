@@ -1,7 +1,7 @@
 package com.metishonora.todaychicken.service;
 
-import com.metishonora.todaychicken.domain.Menu;
 import com.metishonora.todaychicken.repository.MemoryMenuRepository;
+import com.metishonora.todaychicken.domain.Menu;
 
 import java.util.Random;
 
@@ -19,5 +19,4 @@ public class MenuService {
         long index = new Random().nextLong(1, memoryMenuRepository.size() + 1);
         return memoryMenuRepository.get(index);
     }
-
 }

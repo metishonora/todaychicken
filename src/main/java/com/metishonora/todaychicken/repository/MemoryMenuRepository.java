@@ -6,15 +6,13 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class MemoryMenuRepository {
-
-    private static Map<Long, Menu> store = new LinkedHashMap<>();
+    private static final Map<Long, Menu> store = new LinkedHashMap<>();
     private static Long sequence = 0L;
 
     public void clear() {
         store.clear();
         sequence = 0L;
     }
-
     public Long size() {
         return sequence;
     }

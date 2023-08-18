@@ -2,28 +2,29 @@ package com.metishonora.todaychicken.service;
 
 import com.metishonora.todaychicken.domain.Menu;
 import com.metishonora.todaychicken.repository.MemoryMenuRepository;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@SpringBootTest
 public class MenuServiceTest {
-
-    MemoryMenuRepository memoryMenuRepository;
-    MenuService menuService;
+    private final MemoryMenuRepository memoryMenuRepository;
+    private final MenuService menuService;
 
     @BeforeEach
     public void beforeEach() {
-        memoryMenuRepository = new MemoryMenuRepository();
-        menuService = new MenuService(memoryMenuRepository);
+        memoryMenuRepository.clear();
     }
 
-    @AfterEach
-    public void afterEach() {
-        memoryMenuRepository.clear();
+    @Autowired
+    public MenuServiceTest(MenuService menuService, MemoryMenuRepository memoryMenuRepository) {
+        this.memoryMenuRepository = memoryMenuRepository;
+        this.menuService = menuService;
     }
 
     @Test

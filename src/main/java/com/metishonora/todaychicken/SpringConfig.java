@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SpringConfig {
-
     @Bean
     public MemoryMenuRepository memoryMenuRepository() {
         return new MemoryMenuRepository();
@@ -17,5 +16,4 @@ public class SpringConfig {
     public MenuService menuService() {
         return new MenuService(memoryMenuRepository());
     }
-
 }

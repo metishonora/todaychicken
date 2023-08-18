@@ -1,7 +1,5 @@
 package com.metishonora.todaychicken.domain;
 
-import java.util.List;
-
 public class Store {
     private Long id;
     private String name;
